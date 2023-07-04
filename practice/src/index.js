@@ -8,13 +8,16 @@ import reportWebVitals from './reportWebVitals';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import logger from 'redux-logger';
 import reducer from "./redux/reducers";
-
+import { Provider } from 'react-redux';
 const store = createStore(reducer, applyMiddleware(logger));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App store={store} />
+    <Provider store={store}>
+      <App/>
+    </Provider>
+    
   </React.StrictMode>
 );
 

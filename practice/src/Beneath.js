@@ -2,16 +2,13 @@
 import './App.css';
 import React,{useState} from 'react';
 import { increment,increment10,decrement,decrement10 } from './redux/actions';
+import { useSelector,useDispatch } from 'react-redux';
 
-function Beneath({store}) {
-  const [val,setval] = useState(store.getState().value);
-  console.log(store.getState());
-  store.subscribe(()=>{  //runs automatically everytime a state chnges no need to clog every time 
-    setval(store.getState().value)
-       
-   })
+function Beneath() {
+    const v = useSelector(state=>state.value); //useSelector for getting values of the state 
+
   return (
-    <h1>Current Value:{val}</h1>
+    <h1>Current Value:{v}</h1>
   );
 }
 
