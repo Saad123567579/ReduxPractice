@@ -1,4 +1,4 @@
-import {createStore ,applyMiddleware} from 'redux';
+import {createStore ,applyMiddleware,combineReducers} from 'redux';
 import pkg from 'redux-logger';
 const {logger} = pkg;
 import thunk from 'redux-thunk';
