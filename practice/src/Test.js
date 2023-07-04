@@ -1,6 +1,6 @@
 import React from 'react'
 import {useSelector,useDispatch} from 'react-redux';
-import { decrement, decrement10, increment, increment10 } from './slices/accountSlice';
+import { decrement, decrement10, fetchUserById, increment, increment10 } from './slices/accountSlice';
 const Test = () => {
     const amount = useSelector(state=>state.account.amount);
     console.log(amount);
@@ -19,6 +19,9 @@ const Test = () => {
         if(event.target.name==="inc10"){
             dispatch(increment10());
         }
+        if(event.target.name==="i"){
+            dispatch(fetchUserById(1));
+        }
 
     }
   return (
@@ -28,6 +31,8 @@ const Test = () => {
       <h1>{amount}</h1>
       <button onClick={handleClick} name="inc">Increment</button>
       <button onClick={handleClick} name="inc10">Increment10</button>
+      <button onClick={handleClick} name="i">Fetch User</button>
+
     </div>
   )
 }
