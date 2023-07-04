@@ -11,10 +11,13 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 // const store = createStore(reducer, applyMiddleware(logger));
 import accountReducer from "./slices/accountSlice";
-import { configureStore } from '@reduxjs/toolkit';
+import { adminApi } from './api/adminSlice';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 
 const store = configureStore({
-  reducer:{account:accountReducer}
+  reducer:{account:accountReducer,[adminApi.reducerPath]:adminApi.reducer},
+  middleware:(getDefaultMiddleware) => getDefaultMiddleware().concat(adminApi.middleware),
+  
 })
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
